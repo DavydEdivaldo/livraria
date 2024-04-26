@@ -1,10 +1,14 @@
-// const btnFiltrarLivrosFront = document.getElementById("btnFiltrarLivrosFront");
-// btnFiltrarLivrosFront.addEventListener('click', filtrarLivrosFront);
 
-// function filtrarLivrosFront(){
-//     let livrosFiltrados = livros.filter(livro => livro.categoria == 'front-end');
-//     console.table(livrosFiltrados)
-// }
+const btnFiltrarLivros = document.querySelectorAll('.btn');
 
+btnFiltrarLivros.forEach(btn => {
+    btn.addEventListener('click', filtrarLivrosFront);
+});
 
-const btnfront = document.querySelectorAll('button')
+function filtrarLivrosFront(){
+    const identificarBtn = document.getElementById(this.id);
+    const categoria = identificarBtn.value
+
+    let livrosFiltrados = livros.filter(livro => livro.categoria == categoria);
+    exibirLivrosNaTela(livrosFiltrados)
+ }
