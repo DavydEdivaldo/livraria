@@ -9,12 +9,20 @@ function filtrarLivrosFront(){
     const identificarBtn = document.getElementById(this.id);
     const categoria = identificarBtn.value
 
-    let livrosFiltrados = categoria == "disponivel" ? livros.filter(livro => livro.quantidade > 0) : livros.filter(livro => livro.categoria == categoria);
+    let livrosFiltrados = categoria == "disponivel" ? filtrarPorDisponibilidade() : filtrarPorCategoria(categoria);
     exibirLivrosNaTela(livrosFiltrados)
     if(categoria == "disponivel"){
         exibirValorTotalDosLivrosDisponiveisNaTela()
     }
  }
+
+function filtrarPorCategoria(categoria) {
+    return livros.filter(livro => livro.categoria == categoria);
+}
+
+function filtrarPorDisponibilidade() {
+    return livros.filter(livro => livro.quantidade > 0);
+}
 
  function exibirValorTotalDosLivrosDisponiveisNaTela(){
     elementoComValorTotalDeLivrosDisponiveis.innerHTML = `
